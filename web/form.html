@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="http://localhost:8080/FormServlet2" method="post">
+    用户名：<input type="text" name="username"/><br/>
+    密码：<input type="text" name="password"/><br/>
+    爱好：<input type="checkbox" name="hobby" value="smoking"/> 抽烟
+    <input type="checkbox" name="hobby" value="drinking"/> 喝酒
+    <input type="checkbox" name="hobby" value="tangtou"/> 烫头 <br/>
+    <select name="education">
+        <option value="gaozhong">高中</option>
+        <option value="dazhuan">大专</option>
+        <option value="benke">本科</option>
+    </select><br/>
+    <input type="submit" value="post提交"/>
+</form>
+</body>
+</html>

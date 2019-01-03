@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn" onclick="sendAjax();">点击后，发送Ajax请求</button>
+</body>
+<script>
+    function sendAjax() {
+        //js原生的Ajax实现
+
+        //1.创建XMLHttpRequest对象
+        var xhr = new XMLHttpRequest();
+
+        //2.给XMLHttpRequest对象绑定监听
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //5.接收响应
+                alert(xhr.responseText);
+            }
+        };
+        //3.绑定提交地址
+        /**
+         * GET:请求方式；
+         * url：请求地址
+         * flag： true--异步请求，false--同步请求
+         */
+        xhr.open("GET", "/AjaxDemoServlet", true);
+        //4.发送请求
+        xhr.send();
+    }
+</script>
+</html>

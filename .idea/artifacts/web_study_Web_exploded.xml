@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="web_study:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/web_study_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="web_study/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="web_study" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.servlet.jsp.jstl" />
+          <element id="library" level="project" name="druid-1.0.9" />
+          <element id="library" level="project" name="c3p0-0.9.5.2 (2)" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

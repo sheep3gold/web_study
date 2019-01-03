@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="resource/js/jquery-3.3.1.js"></script>
+</head>
+<body>
+<form action="loginServlet" method="get" style="text-align: center">
+    <table border="1px solid black" cellspacing="0" cellpadding="2px"
+    align="center">
+        <th style="text-align: center;font-size: 18px"
+            colspan="2"><b>登陆</b></th>
+        <tr align="right">
+            <td>用户名：</td>
+            <td><input type="text" name="uname" id="username"></td>
+        </tr>
+        <tr align="right">
+            <td>密码：</td>
+            <td><input type="password" name="pwd" id="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="checkbox"  name="remember" value="remember">
+                记住账号和密码</td>
+        </tr>
+        <tr>
+            <td><input type="text" name="checkCode" placeholder="验证码"></td>
+            <td><img src="/CheckCodeServlet" alt="" id="checkCodeImg"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="登陆"></td>
+        </tr>
+    </table>
+</form>
+</body>
+<script>
+    function autoLogin() {
+        var cookies = document.cookie.split("; ");
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie= cookies[i].split("=");
+            var cookieName = cookie[0];
+            var cookieValue = cookie[1];
+            if ("username" == cookieName) {
+                $("#username").val(cookieValue);
+                console.log(cookieName)
+            }
+            if ("password" == cookieName) {
+                $("#password").val(cookieValue);
+                console.log(cookieValue)
+            }
+            if ("flag" == cookieName&&"true"==cookieValue) {
+                alert("请先登陆");
+            }
+        }
+    }
+    autoLogin();
+</script>
+</html>

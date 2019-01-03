@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var stu_score = {
+        "name": "张三",
+        "scores": [{"course": "语文", "score": 100},
+            {"course": "数学", "score": 90},
+            {"course": "英语", "score": 80}
+        ]
+    };
+    var scores = stu_score.scores;
+    for (var i = 0; i < scores.length; i++) {
+        alert(scores[i].course + "的分数是：" + scores[i].score);
+    }
+</script>
+</html>

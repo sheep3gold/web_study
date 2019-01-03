@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>用户注册</title>
+
+    <!-- Bootstrap core CSS -->
+    <script src="resource/js/jquery-3.3.1.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <!--<link href="/css/signin.css" rel="stylesheet">-->
+</head>
+<body>
+<div class="container">
+    <div class="text-center">
+        <h2>注册页面</h2>
+    </div>
+    <form class="form-horizontal" action="/registServlet" method="post">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="username" placeholder="Name">
+                <label class="col-lg-0 control-label" id="nameMsg"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pwd" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="pwd" name="password" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">性别</label>
+            <div class="col-sm-10">
+                <label class="radio-inline">
+                    <input type="radio" name="gender" id="inlineRadio1" value="男"> 男
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="gender" id="inlineRadio2" value="女"> 女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-2 control-label">兴趣爱好</label>
+            <div class="col-sm-10">
+                <label class="checkbox-inline">
+                    <input type="checkbox"  value="编程" name="hobby"> 编程
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox"  value="玩游戏" name="hobby"> 玩游戏
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="烫头" name="hobby"> 烫头
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="birthday" class="col-sm-2 control-label">生日</label>
+            <div class="col-sm-10">
+                <input type="date" class="form-control" id="birthday" name="birthday" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">城市</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="city" name="city">
+                    <option>北京</option>
+                    <option>上海</option>
+                    <option>广州</option>
+                    <option>深圳</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="desc" class="col-sm-2 control-label">自我描述</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="desc" name="description" placeholder="Description">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-10">
+                <input class="btn btn-primary" type="submit" value="提交" />
+                <input class="btn btn-default" type="reset" value="重置" />
+                <input class="btn btn-default" type="button" value="返回" />            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    //对用户名进行异步校验
+    $(function () {
+        //对用户名输入框绑定离焦事件
+        $("#name").blur(function () {
+            //将用户名发送到后台进行校验
+            $.post("/CheckUserNameServlet",{"name":this.value},function (res) {
+                if(res.flag){
+                    $("#nameMsg").html("<font color='green'>√</font>")
+                }else {
+                    $("#nameMsg").html("<font color='red'>请不要重复注册！</font>")
+                }
+            },"json");
+        });
+    })
+</script>
+</html>
